@@ -1,0 +1,76 @@
+@charset 'utf-8';
+html {
+  box-sizing: border-box;
+  -webkit-font-smoothing:antialiased;
+}
+
+*::before, *::after {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  margin:0;
+  padding:0;
+}
+
+p {
+  font-size:15px;
+}
+
+a {
+  color:#333;
+  text-decoration: none;
+}
+
+.container {
+  padding: 2rem;
+}
+
+.list{
+  line-height: 1.6;
+}
+
+a {
+  display: inline-block;
+  vertical-align: middle;
+  padding:0 3px;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  position: relative;
+  -webkit-transition-property: color;
+  transition-property: color;
+  -webkit-transition-duration: .2s;
+  transition-duration: .2s;
+}
+
+a:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #000;
+  -webkit-transform: scaleX(0);
+  transform: scaleX(0);
+  -webkit-transform-origin: 0 50%;
+  transform-origin: 0 50%;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-duration: .2s;
+  transition-duration: .2s;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+}
+
+a:hover, a:focus, a:active {
+  color: white;
+}
+
+a:hover:before, a:focus:before, a:active:before {
+  -webkit-transform: scaleX(1);
+  transform: scaleX(1);
+}
