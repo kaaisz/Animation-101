@@ -91,7 +91,17 @@ body {
     text-align: center;
     padding: 200px 0;
     border-bottom: 1px #ebebeb solid;
+    opacity: 0;
+    /* transform: translateY(50px); */
+    transition: all 1s ease-out;
 }
+
+/* Add style for when fade-in class is added */
+.project.fade-in {
+    opacity: 1;
+    /* transform: translateY(0); */
+}
+
 .project img {
     width: 180px;
     height: 180px;
