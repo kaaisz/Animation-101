@@ -12,7 +12,7 @@ $(document).ready(function(){
 			// this = each project which spacified in $()
 			// children[0] is the img element
 			triggerElement: this.children[0],
-			triggerHook: 0.9,
+			triggerHook: 1,
 			reverse: false // disable fade-out even if scroll reverse
 		})
 		.setClassToggle(this, 'fade-in') // add class to project01
