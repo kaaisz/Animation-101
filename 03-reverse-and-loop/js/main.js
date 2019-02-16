@@ -11,7 +11,7 @@ $(document).ready(function(){
 		var ourScene = new ScrollMagic.Scene({
 			// this = each project which spacified in $()
 			// children[0] is the img element
-			triggerElement: this.children,
+			triggerElement: this.children[0],
 			triggerHook: 0.9,
 			reverse: false // disable fade-out even if scroll reverse
 		})
