@@ -1,3 +1,3 @@
 # Animation-101
 
-http://suzydp.github.io/animation-101/
+https://suzydp.github.io/Animation-101/
