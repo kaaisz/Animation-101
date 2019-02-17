@@ -3,6 +3,26 @@ $(document).ready(function(){
 	// Init ScrollMagic
 	var controller = new ScrollMagic.Controller();
 
+	//// multiple pin in a single element
+	// pin the intro
+	var pinIntroScene = new ScrollMagic.Scene({
+		// define options by creating projects
+		triggerElement: '#intro',
+		triggerHook: 0,
+		// duration will work until the specified height of scroll will finished
+		duration: '30%',
+	})
+	.setPin('#intro', {pushFollowers: false})
+	.addTo(controller);
+
+	// pin again
+	var pinIntroScene2 = new ScrollMagic.Scene({
+		triggerElement: '#project01',
+		triggerHook: 0.4,
+	})
+	.setPin('#intro', {pushFollowers: false})
+	.addTo(controller);
+
 	// loop through each .project element
 	$('.project').each(function(){
 

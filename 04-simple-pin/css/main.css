@@ -118,6 +118,11 @@ body {
     color: #F5876F;
 }
 
+#main {
+    background: #fff;
+    position: relative; /*To pin background*/
+}
+
 /* =Footer */
 .footer-container {
     text-align: center;
