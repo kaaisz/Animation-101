@@ -1,4 +1,5 @@
-var gulp = require('gulp'),
+const 
+    gulp = require('gulp'),
     sass = require('gulp-sass'),
     concat = require('gulp-concat'),
     jshint = require('gulp-jshint'),
@@ -8,7 +9,7 @@ var gulp = require('gulp'),
     rename = require("gulp-rename");
 
 // Compile Sass to css and place it in css/styles.css
-gulp.task('styles', function() {
+gulp.task('styles', () => {
   return gulp.src('src/scss/*.scss')
     .pipe(sass({
       'sourcemap=none': true
@@ -20,7 +21,7 @@ gulp.task('styles', function() {
 
 // Watch for changes in scss files
 // Watch for errors in js file
-gulp.task('watch', function() {
+gulp.task('watch', () => {
     gulp.watch('src/scss/**/*.scss', ['styles']);
     gulp.watch('src/js/*.js', ['jshint', 'compress']);
 });
@@ -33,7 +34,7 @@ gulp.task('jshint', function() {
 });
 
 // Ugligy JS
-gulp.task('compress', function() {
+gulp.task('compress', () => {
   return gulp.src('src/js/*.js')
     .pipe(uglify())
     .pipe(gulp.dest('js'));
@@ -48,4 +49,6 @@ gulp.task('minify-css', function() {
 });
 
 // All tasks together
+// 'default' can be skip the declareance without any options
+// you can only call "gulp" to invoke all at once
 gulp.task('default', ['styles', 'jshint', 'watch']);

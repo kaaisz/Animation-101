@@ -4,7 +4,7 @@
   "description": "Our Project",
   "author": "Petr Tichy",
   "devDependencies": {
-    "gulp": "^3.8.11",
+    "gulp": "^3.9.1",
     "gulp-autoprefixer": "^2.2.0",
     "gulp-concat": "^2.5.2",
     "gulp-jshint": "^1.10.0",
