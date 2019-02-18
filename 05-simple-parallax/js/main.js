@@ -20,6 +20,25 @@ $(document).ready(function(){
 	.setPin('#intro', {pushFollowers: false})
 	.addTo(controller);
 
+	// parallax scene
+	var slideparallaxScene = new ScrollMagic.Scene({
+		triggerElement: '.bcg-parallax',
+		triggerHook: 1, //bottom of the scene
+		duration: '200%',
+	})
+	.setTween(TweenMax
+		// define tween while scrolling until 200%
+		.from(
+			'.bcg', // target - background is moving from -30% below
+			 1, // duration - background is moving to 0
+			{
+				y: '-30%', // y offset
+				ease: Power0.easeNone
+			}
+		)
+	)
+	.addTo(controller);
+
 	// loop through each .project element
 	$('.project').each(function(){
 
