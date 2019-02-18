@@ -1,5 +1,5 @@
 (function($) {
-    
+  console.log('Hello from tweenmax');
 	// JS code goes here
 	var header = $('#header');
 	TweenLite.to(

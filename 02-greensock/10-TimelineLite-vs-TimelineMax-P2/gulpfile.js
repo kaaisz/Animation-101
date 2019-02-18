@@ -1,51 +1,60 @@
-var gulp = require('gulp'),
-    sass = require('gulp-sass'),
-    concat = require('gulp-concat'),
-    jshint = require('gulp-jshint'),
-    autoprefixer = require('gulp-autoprefixer')
-    uglify = require('gulp-uglify'),
-    minifyCss = require('gulp-minify-css'),
-    rename = require("gulp-rename");
+const gulp = require('gulp');
+const sass = require('gulp-sass');
+const concat = require('gulp-concat');
+const jshint = require('gulp-jshint');
+const autoprefixer = require('gulp-autoprefixer');
+const uglify = require('gulp-uglify');
+const cleanCSS = require('gulp-clean-css');
+const rename = require("gulp-rename");
 
 // Compile Sass to css and place it in css/styles.css
-gulp.task('styles', function() {
-  return gulp.src('src/scss/*.scss')
+const styles = () => {
+  return gulp
+    .src('src/scss/*.scss')
     .pipe(sass({
       'sourcemap=none': true
     }))
     .pipe(concat('styles.css'))
     .pipe(autoprefixer('last 2 version', 'ie 9'))
-    .pipe(gulp.dest('css/'))
-});
+    .pipe(gulp.dest('css/'));
+}
 
 // Watch for changes in scss files
 // Watch for errors in js file
-gulp.task('watch', function() {
-    gulp.watch('src/scss/**/*.scss', ['styles']);
-    gulp.watch('src/js/*.js', ['jshint', 'compress']);
-});
+const watchFiles = () => {
+  gulp.watch('src/scss/**/*.scss', styles);
+  gulp.watch('src/js/*.js', compress);
+}
 
 // Catch JS errors
-gulp.task('jshint', function() {
-    return gulp.src('src/js/*.js')
-        .pipe(jshint())
-        .pipe(jshint.reporter('jshint-stylish'))
-});
+const scriptLint = () => {
+  return gulp
+    .src('src/js/*.js')
+    .pipe(jshint.reporter('jshint-stylish'));
+}
 
 // Ugligy JS
-gulp.task('compress', function() {
-  return gulp.src('src/js/*.js')
+const compress = () => {
+  return gulp
+    .src('src/js/*.js')
     .pipe(uglify())
     .pipe(gulp.dest('js'));
-});
+}
 
 // Minify CSS
-gulp.task('minify-css', function() {
-  return gulp.src('css/styles.css')
-  	.pipe(rename({suffix: ".min"}))
-    .pipe(minifyCss({compatibility: 'ie8'}))
-    .pipe(gulp.dest('css'));
-});
+const minifyCss = () => {
+  return (
+    gulp
+    .src('css/styles.css')
+    .pipe(rename({suffix: ".min"}))
+    .pipe(cleanCSS({compatibility: 'ie8'}))
+    .pipe(gulp.dest('css'))
+  );
+}
 
 // All tasks together
-gulp.task('default', ['styles', 'jshint', 'watch']);
+const build = gulp.series(gulp.parallel(styles, scriptLint, watchFiles));
+
+// 'default' can be skip the declareance without any options
+// you can only call "gulp" to invoke all at once
+exports.default = build;
